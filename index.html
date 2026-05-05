@@ -1,0 +1,1337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combine Advisory | Business Growth Studio</title>
+    <style>
+      :root {
+        --ink: #172026;
+        --muted: #63717b;
+        --line: #d9e2e4;
+        --paper: #f7f6f1;
+        --white: #ffffff;
+        --teal: #0f6f6a;
+        --teal-dark: #084b49;
+        --coral: #d95d39;
+        --gold: #d6a84f;
+        --shadow: 0 18px 55px rgba(23, 32, 38, 0.14);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.55;
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 20;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+        color: var(--white);
+        transition:
+          background 0.25s ease,
+          color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .site-header.scrolled,
+      .site-header.menu-active {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 35px rgba(23, 32, 38, 0.08);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border: 2px solid currentColor;
+        border-radius: 8px;
+      }
+
+      .brand-mark span {
+        width: 16px;
+        height: 16px;
+        background: var(--coral);
+        transform: rotate(45deg);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        font-size: 0.96rem;
+        font-weight: 650;
+      }
+
+      .nav-links a {
+        opacity: 0.9;
+      }
+
+      .nav-links a:hover {
+        opacity: 1;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .icon-button,
+      .menu-button {
+        display: inline-grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid currentColor;
+        border-radius: 8px;
+        color: inherit;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .menu-button {
+        display: none;
+      }
+
+      .icon-button svg,
+      .menu-button svg {
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 750;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        color: #ffffff;
+        background: var(--coral);
+        box-shadow: 0 12px 26px rgba(217, 93, 57, 0.26);
+      }
+
+      .btn-secondary {
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.58);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .site-header.scrolled .btn-secondary,
+      .site-header.menu-active .btn-secondary {
+        color: var(--teal-dark);
+        border-color: var(--line);
+        background: var(--white);
+      }
+
+      .hero {
+        position: relative;
+        display: grid;
+        min-height: 88vh;
+        align-items: end;
+        overflow: hidden;
+        color: var(--white);
+        isolation: isolate;
+      }
+
+      .hero::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background:
+          linear-gradient(
+            90deg,
+            rgba(7, 35, 36, 0.9) 0%,
+            rgba(7, 35, 36, 0.68) 45%,
+            rgba(7, 35, 36, 0.2) 100%
+          ),
+          url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=85")
+            center / cover;
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: -1;
+        height: 34%;
+        content: "";
+        background: linear-gradient(
+          0deg,
+          rgba(23, 32, 38, 0.48),
+          rgba(23, 32, 38, 0)
+        );
+      }
+
+      .hero-content {
+        display: grid;
+        max-width: 780px;
+        gap: 24px;
+        padding: 132px 0 74px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 10px;
+        color: #e6f2ef;
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 34px;
+        height: 2px;
+        content: "";
+        background: var(--gold);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(2.8rem, 7vw, 6.6rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 640px;
+        color: #eef7f5;
+        font-size: clamp(1.05rem, 2vw, 1.28rem);
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-top: 4px;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+      }
+
+      .hero-stat {
+        padding: 24px 24px 25px 0;
+      }
+
+      .hero-stat strong {
+        display: block;
+        font-size: clamp(1.65rem, 3vw, 2.4rem);
+        line-height: 1;
+      }
+
+      .hero-stat span {
+        display: block;
+        max-width: 170px;
+        margin-top: 8px;
+        color: #dbe8e5;
+        font-size: 0.94rem;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.6fr);
+        gap: 38px;
+        align-items: end;
+        margin-bottom: 36px;
+      }
+
+      .section-kicker {
+        margin-bottom: 10px;
+        color: var(--coral);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 4vw, 3.8rem);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .service-card,
+      .pricing-card,
+      .quote-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: 0 10px 30px rgba(23, 32, 38, 0.05);
+      }
+
+      .service-card {
+        min-height: 284px;
+        padding: 28px;
+      }
+
+      .service-icon {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        place-items: center;
+        margin-bottom: 34px;
+        border-radius: 8px;
+        color: var(--white);
+        background: var(--teal);
+      }
+
+      .service-icon svg {
+        width: 23px;
+        height: 23px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      .service-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.18rem;
+      }
+
+      .service-card p {
+        color: var(--muted);
+      }
+
+      .work-band {
+        color: var(--white);
+        background: var(--teal-dark);
+      }
+
+      .work-band .section-kicker {
+        color: #f3bd68;
+      }
+
+      .work-band .section-head p {
+        color: #c9dcda;
+      }
+
+      .case-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.72fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .case-image {
+        min-height: 500px;
+        border-radius: 8px;
+        background: url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1500&q=85")
+          center / cover;
+        box-shadow: var(--shadow);
+      }
+
+      .case-panel {
+        display: grid;
+        gap: 18px;
+        align-content: center;
+        padding: 38px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .case-panel h3 {
+        font-size: clamp(1.7rem, 3vw, 2.5rem);
+        line-height: 1.08;
+      }
+
+      .case-panel p {
+        color: #d8e8e6;
+      }
+
+      .case-list {
+        display: grid;
+        gap: 12px;
+        padding: 0;
+        margin: 12px 0 0;
+        list-style: none;
+      }
+
+      .case-list li {
+        display: flex;
+        gap: 10px;
+        color: #f7fbfa;
+      }
+
+      .case-list li::before {
+        flex: 0 0 auto;
+        width: 8px;
+        height: 8px;
+        margin-top: 9px;
+        border-radius: 50%;
+        content: "";
+        background: var(--gold);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .pricing-card {
+        display: grid;
+        gap: 18px;
+        padding: 30px;
+      }
+
+      .pricing-card.featured {
+        color: var(--white);
+        border-color: var(--teal);
+        background: var(--teal);
+        box-shadow: var(--shadow);
+      }
+
+      .pricing-card h3 {
+        font-size: 1.25rem;
+      }
+
+      .price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+
+      .price strong {
+        font-size: 2.2rem;
+        line-height: 1;
+      }
+
+      .pricing-card p,
+      .pricing-card li {
+        color: var(--muted);
+      }
+
+      .pricing-card.featured p,
+      .pricing-card.featured li {
+        color: #d9efec;
+      }
+
+      .pricing-card ul {
+        display: grid;
+        gap: 9px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .pricing-card li {
+        display: flex;
+        gap: 9px;
+      }
+
+      .pricing-card li::before {
+        width: 7px;
+        height: 12px;
+        margin-top: 4px;
+        border: solid currentColor;
+        border-width: 0 2px 2px 0;
+        content: "";
+        color: var(--coral);
+        transform: rotate(45deg);
+      }
+
+      .pricing-card.featured li::before {
+        color: #f8c66d;
+      }
+
+      .quote-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.75fr) minmax(280px, 0.45fr);
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .quote-card {
+        display: grid;
+        gap: 26px;
+        padding: 36px;
+      }
+
+      .quote-card blockquote {
+        margin: 0;
+        font-size: clamp(1.45rem, 3vw, 2.6rem);
+        font-weight: 760;
+        line-height: 1.12;
+      }
+
+      .quote-person {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+      }
+
+      .quote-person img {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .faq-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        overflow: hidden;
+      }
+
+      .faq-question {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 20px;
+        border: 0;
+        color: var(--ink);
+        background: transparent;
+        cursor: pointer;
+        font-weight: 760;
+        text-align: left;
+      }
+
+      .faq-question span:last-child {
+        flex: 0 0 auto;
+        font-size: 1.35rem;
+        line-height: 1;
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 0 20px 18px;
+        color: var(--muted);
+      }
+
+      .faq-item.active .faq-answer {
+        display: block;
+      }
+
+      .contact-band {
+        padding-bottom: 0;
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(330px, 0.58fr);
+        gap: 30px;
+        align-items: stretch;
+        padding: 52px;
+        color: var(--white);
+        border-radius: 8px 8px 0 0;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(8, 75, 73, 0.95),
+            rgba(15, 111, 106, 0.88)
+          ),
+          url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=85")
+            center / cover;
+      }
+
+      .contact-copy {
+        display: grid;
+        align-content: center;
+        gap: 18px;
+      }
+
+      .contact-copy p {
+        max-width: 560px;
+        color: #dcebea;
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 12px;
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(14px);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      label {
+        display: grid;
+        gap: 6px;
+        color: #f6fbfa;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 46px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 8px;
+        color: var(--white);
+        background: rgba(5, 35, 34, 0.38);
+        outline: none;
+      }
+
+      input,
+      select {
+        padding: 0 13px;
+      }
+
+      textarea {
+        min-height: 110px;
+        padding: 12px 13px;
+        resize: vertical;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #bed1cf;
+      }
+
+      .form-note {
+        min-height: 22px;
+        color: #ffe1a3;
+        font-size: 0.92rem;
+        font-weight: 750;
+      }
+
+      .site-footer {
+        padding: 28px 0;
+        color: #4f5e67;
+        background: #eef0ea;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        font-size: 0.95rem;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        font-weight: 700;
+      }
+
+      body.dark {
+        --ink: #eef5f2;
+        --muted: #b8c7c3;
+        --line: #294744;
+        --paper: #101817;
+        color: var(--ink);
+        background: var(--paper);
+      }
+
+      body.dark .site-header.scrolled,
+      body.dark .site-header.menu-active {
+        color: #eef5f2;
+        background: rgba(16, 24, 23, 0.94);
+      }
+
+      body.dark .service-card,
+      body.dark .pricing-card,
+      body.dark .quote-card,
+      body.dark .faq-item {
+        background: #172321;
+      }
+
+      body.dark .faq-question {
+        color: var(--ink);
+      }
+
+      body.dark .site-footer {
+        color: #becac6;
+        background: #0c1211;
+      }
+
+      @media (max-width: 940px) {
+        .menu-button {
+          display: inline-grid;
+        }
+
+        .nav-links {
+          position: fixed;
+          inset: 72px 0 auto;
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 12px 20px 22px;
+          color: var(--ink);
+          background: rgba(255, 255, 255, 0.97);
+          box-shadow: 0 28px 42px rgba(23, 32, 38, 0.16);
+        }
+
+        body.dark .nav-links {
+          color: #eef5f2;
+          background: rgba(16, 24, 23, 0.98);
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .nav-links a {
+          padding: 14px 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .section-head,
+        .case-layout,
+        .quote-grid,
+        .contact-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid,
+        .pricing-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .case-image {
+          min-height: 360px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .shell {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .nav {
+          min-height: 66px;
+        }
+
+        .nav-links {
+          inset: 66px 0 auto;
+        }
+
+        .nav-actions .btn {
+          display: none;
+        }
+
+        .hero {
+          min-height: 92vh;
+        }
+
+        .hero-content {
+          padding: 112px 0 48px;
+        }
+
+        .hero-stats,
+        .services-grid,
+        .pricing-grid,
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-stat {
+          padding: 18px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        section {
+          padding: 64px 0;
+        }
+
+        .service-card,
+        .pricing-card,
+        .quote-card,
+        .case-panel {
+          padding: 24px;
+        }
+
+        .contact-wrap {
+          padding: 30px 18px;
+        }
+
+        .footer-inner,
+        .footer-links {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader">
+      <nav class="nav shell" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Combine Advisory home">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span>Danish Web</span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#plans">Plans</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+          <button
+            class="icon-button"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark theme"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36-6.36-1.42 1.42M7.06 16.94l-1.42 1.42m12.72 0-1.42-1.42M7.06 7.06 5.64 5.64"
+              />
+              <circle cx="12" cy="12" r="4" />
+            </svg>
+          </button>
+          <a class="btn btn-secondary" href="#contact">Book a call</a>
+          <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Business growth consulting">
+        <div class="shell">
+          <div class="hero-content">
+            <span class="eyebrow">Growth systems for ambitious teams</span>
+            <h1>Combine smarter strategy with sharper execution.</h1>
+            <p class="hero-copy">
+              We help service businesses organize operations, modernize customer
+              journeys, and turn scattered ideas into measurable growth.
+            </p>
+            <div class="hero-buttons">
+              <a class="btn btn-primary" href="#contact">Start your project</a>
+              <a class="btn btn-secondary" href="#work">View results</a>
+            </div>
+          </div>
+
+          <div class="hero-stats" aria-label="Company results">
+            <div class="hero-stat">
+              <strong data-count="42">0</strong>
+              <span>client launches delivered in the last year</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-count="31">0</strong>
+              <span>average pipeline lift after 90 days</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-count="18">0</strong>
+              <span>markets supported across North America</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Services</p>
+              <h2>Practical support for every stage of growth.</h2>
+            </div>
+            <p>
+              Combine Advisory works beside founders, operators, and sales
+              leaders who need clear priorities, stronger systems, and momentum
+              that lasts beyond the next campaign.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 19V5m0 14h16M8 16l3-4 3 2 4-7" />
+                </svg>
+              </div>
+              <h3>Growth Strategy</h3>
+              <p>
+                Market positioning, offer design, pricing, and channel plans
+                built around where your best demand already lives.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 8h16M4 16h16M8 4v16M16 4v16" />
+                </svg>
+              </div>
+              <h3>Operating Systems</h3>
+              <p>
+                Lean workflows, dashboards, handoff maps, and service playbooks
+                that reduce drag across daily work.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3v18M5 8h9a5 5 0 0 1 0 10H5" />
+                </svg>
+              </div>
+              <h3>Revenue Enablement</h3>
+              <p>
+                Sales assets, CRM structure, customer journeys, and follow-up
+                routines that make growth easier to repeat.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="work-band" id="work">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Selected Work</p>
+              <h2>Focused projects with visible business outcomes.</h2>
+            </div>
+            <p>
+              Our best work starts with the same question: what has to become
+              simpler for the business to move faster?
+            </p>
+          </div>
+
+          <div class="case-layout">
+            <div
+              class="case-image"
+              role="img"
+              aria-label="A business team planning around a conference table"
+            ></div>
+            <article class="case-panel">
+              <h3>Turning a regional firm into a repeatable sales engine.</h3>
+              <p>
+                A 14-person professional services company had strong referrals
+                but an unpredictable pipeline. We rebuilt the offer ladder,
+                clarified account ownership, and launched a weekly revenue
+                rhythm.
+              </p>
+              <ul class="case-list">
+                <li>Two new service packages launched in six weeks</li>
+                <li>Sales cycle shortened from 41 days to 24 days</li>
+                <li>Forecast accuracy improved across the leadership team</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="plans">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Plans</p>
+              <h2>Choose the level of partnership that fits the moment.</h2>
+            </div>
+            <p>
+              Start with one focused project or bring us in as a strategic
+              partner for the quarter.
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="pricing-card">
+              <h3>Audit</h3>
+              <div class="price">
+                <strong>$950</strong><span>one time</span>
+              </div>
+              <p>A fast read on strategy, sales, and operations.</p>
+              <ul>
+                <li>Business review call</li>
+                <li>Opportunity map</li>
+                <li>Priority action plan</li>
+              </ul>
+            </article>
+
+            <article class="pricing-card featured">
+              <h3>Launch Sprint</h3>
+              <div class="price">
+                <strong>$4.8k</strong><span>project</span>
+              </div>
+              <p>A hands-on build for one growth initiative.</p>
+              <ul>
+                <li>Four-week sprint</li>
+                <li>Weekly working sessions</li>
+                <li>Assets, systems, and rollout support</li>
+              </ul>
+            </article>
+
+            <article class="pricing-card">
+              <h3>Quarter Partner</h3>
+              <div class="price">
+                <strong>$3.2k</strong><span>monthly</span>
+              </div>
+              <p>Ongoing advisory for leaders moving through change.</p>
+              <ul>
+                <li>Monthly leadership workshops</li>
+                <li>Dashboard and planning cadence</li>
+                <li>Team enablement support</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="shell">
+          <div class="quote-grid">
+            <article class="quote-card">
+              <blockquote>
+                "Combine gave us the language, cadence, and tools to make growth
+                feel manageable again."
+              </blockquote>
+              <div class="quote-person">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+                  alt="Portrait of Maya Chen"
+                />
+                <div>
+                  <strong>Maya Chen</strong><br />
+                  Principal, Northline Partners
+                </div>
+              </div>
+            </article>
+
+            <div class="faq-list" aria-label="Frequently asked questions">
+              <div class="faq-item active">
+                <button class="faq-question" type="button">
+                  <span>How quickly can we begin?</span>
+                  <span aria-hidden="true">-</span>
+                </button>
+                <div class="faq-answer">
+                  Most audits begin within one week. Larger sprints usually
+                  start after a short scoping call.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Do you work with small teams?</span>
+                  <span aria-hidden="true">+</span>
+                </button>
+                <div class="faq-answer">
+                  Yes. We often work with teams between 5 and 50 people where
+                  better systems can unlock real capacity.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Can you implement the plan?</span>
+                  <span aria-hidden="true">+</span>
+                </button>
+                <div class="faq-answer">
+                  Yes. Strategy without execution is too easy to admire and too
+                  hard to use, so sprint plans include implementation support.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-band" id="contact">
+        <div class="shell">
+          <div class="contact-wrap">
+            <div class="contact-copy">
+              <p class="section-kicker">Contact</p>
+              <h2>
+                Bring the messy business problem. We will help shape the next
+                move.
+              </h2>
+              <p>
+                Share a few details and we will reply with the best next step
+                for your goals, timeline, and team.
+              </p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <label>
+                  Name
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="Alex Morgan"
+                    required
+                  />
+                </label>
+                <label>
+                  Email
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="alex@company.com"
+                    required
+                  />
+                </label>
+              </div>
+              <label>
+                Business stage
+                <select name="stage" required>
+                  <option value="">Select one</option>
+                  <option>Starting up</option>
+                  <option>Growing steadily</option>
+                  <option>Scaling operations</option>
+                  <option>Reworking strategy</option>
+                </select>
+              </label>
+              <label>
+                Project notes
+                <textarea
+                  name="message"
+                  placeholder="What needs to change in the next 90 days?"
+                  required
+                ></textarea>
+              </label>
+              <button class="btn btn-primary" type="submit">
+                Send inquiry
+              </button>
+              <div
+                class="form-note"
+                id="formNote"
+                role="status"
+                aria-live="polite"
+              ></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner shell">
+        <p>
+          &copy; <span id="year"></span> Combine Advisory. Built for decisive
+          business growth.
+        </p>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#plans">Plans</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.getElementById("siteHeader");
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      const themeToggle = document.getElementById("themeToggle");
+      const form = document.getElementById("contactForm");
+      const formNote = document.getElementById("formNote");
+
+      const updateHeader = () => {
+        header.classList.toggle("scrolled", window.scrollY > 24);
+      };
+
+      updateHeader();
+      window.addEventListener("scroll", updateHeader, { passive: true });
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        document.body.classList.toggle("menu-open", isOpen);
+        header.classList.toggle("menu-active", isOpen);
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation" : "Open navigation",
+        );
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          document.body.classList.remove("menu-open");
+          header.classList.remove("menu-active");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "Open navigation");
+        });
+      });
+
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+      });
+
+      const countStats = () => {
+        document.querySelectorAll("[data-count]").forEach((stat) => {
+          const target = Number(stat.dataset.count);
+          let current = 0;
+          const increment = Math.max(1, Math.round(target / 34));
+          const timer = window.setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              window.clearInterval(timer);
+            }
+            stat.textContent =
+              stat.dataset.count === "31" ? `${current}%` : current;
+          }, 28);
+        });
+      };
+
+      const statsObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              countStats();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.45 },
+      );
+
+      statsObserver.observe(document.querySelector(".hero-stats"));
+
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".faq-item");
+          const symbol = button.querySelector("span:last-child");
+          item.classList.toggle("active");
+          symbol.textContent = item.classList.contains("active") ? "-" : "+";
+        });
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const name =
+          data.get("name").toString().trim().split(" ")[0] || "there";
+        formNote.textContent = `Thanks, ${name}. Your inquiry is ready for follow-up.`;
+        form.reset();
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
