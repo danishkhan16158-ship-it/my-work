@@ -1,0 +1,56 @@
+[build]
+# This is the directory that contains your static files
+publish = "."
+# Build command for the backend (if needed)
+command = "npm install"
+
+[dev]
+# Port for local development
+port = 8888
+
+[[redirects]]
+# Redirect API calls to the backend server
+from = "/api/*"
+to = "http://localhost:5000/api/:splat"
+status = 200
+
+[[headers]]
+# Security headers
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache policy for HTML files
+[[headers]]
+for = "*.html"
+[headers.values]
+Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache policy for static assets
+[[headers]]
+for = "/static/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "*.css"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "*.js"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "*.woff2"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "*.png"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"

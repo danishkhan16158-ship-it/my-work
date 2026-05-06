@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danah Web | Premium Digital Experiences</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Montserrat", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              navy: "#0A0F2C",
+              teal: "#00D2C4",
+              cyan: "#00B5E2",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+                "50%": { transform: "translateY(-18px) rotate(1.5deg)" },
+              },
+              shimmer: {
+                "0%": { transform: "translateX(-120%)" },
+                "100%": { transform: "translateX(120%)" },
+              },
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              shimmer: "shimmer 3.5s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="min-h-screen overflow-x-hidden bg-navy font-sans text-white antialiased selection:bg-teal/30 selection:text-white"
+  >
+    <div class="pointer-events-none fixed inset-0 -z-30 bg-navy"></div>
+    <div
+      class="pointer-events-none fixed inset-0 -z-20 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_78%)]"
+    ></div>
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute -right-52 top-24 h-[34rem] w-[34rem] rotate-45 border border-teal/20 bg-teal/[0.035]"
+      ></div>
+      <div
+        class="absolute -left-48 bottom-10 h-[30rem] w-[30rem] -rotate-12 border border-cyan/20 bg-cyan/[0.035]"
+      ></div>
+    </div>
+
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy/75 shadow-[0_16px_50px_rgba(0,0,0,0.2)] backdrop-blur-2xl"
+    >
+      <div class="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+        <div class="flex min-h-[78px] items-center justify-between gap-4 py-3">
+          <a
+            href="#home"
+            class="flex min-w-0 shrink items-center gap-2 sm:gap-3"
+            aria-label="Danah Web home"
+          >
+            <img
+              src="danah-web-bgc.png"
+              alt="Danah Web"
+              class="h-10 w-auto max-w-[44px] rounded-xl object-contain sm:h-12 sm:max-w-[64px] lg:max-w-[150px]"
+            />
+            <span
+              class="truncate text-sm font-extrabold text-white sm:text-base"
+              >Danah Web</span
+            >
+          </a>
+
+          <nav
+            class="hidden items-center gap-7 text-sm font-bold text-white/75 md:flex"
+            aria-label="Primary navigation"
+          >
+            <a
+              href="#home"
+              class="transition-colors duration-300 hover:text-white"
+              >Home</a
+            >
+            <a
+              href="#services"
+              class="transition-colors duration-300 hover:text-white"
+              >Services</a
+            >
+            <a
+              href="#pricing"
+              class="transition-colors duration-300 hover:text-white"
+              >Pricing</a
+            >
+            <a
+              href="#portfolio"
+              class="transition-colors duration-300 hover:text-white"
+              >Portfolio</a
+            >
+            <a
+              href="#contact"
+              class="transition-colors duration-300 hover:text-white"
+              >Contact</a
+            >
+          </nav>
+
+          <form
+            class="hidden min-w-[230px] items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-4 py-2 text-white/80 shadow-inner shadow-white/5 transition-all duration-300 focus-within:border-teal/70 focus-within:bg-white/[0.1] focus-within:shadow-[0_0_28px_rgba(0,210,196,0.22)] lg:flex"
+            role="search"
+          >
+            <label for="site-search" class="sr-only">Search Danah Web</label>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+              class="shrink-0 text-teal"
+            >
+              <path
+                d="m21 21-4.3-4.3M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input
+              id="site-search"
+              type="search"
+              placeholder="Search..."
+              class="h-9 w-full bg-transparent text-sm font-medium text-white outline-none placeholder:text-white/45"
+            />
+          </form>
+
+          <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+            <a
+              target="_blank"
+              href="login.html"
+              class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/20 bg-white/[0.04] px-3 text-xs font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/10 sm:min-h-[46px] sm:px-4 sm:text-sm"
+            >
+              Login
+            </a>
+            <a
+              target="_blank"
+              href="signup.html"
+              class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-gradient-to-r from-teal to-cyan px-3 text-xs font-extrabold text-white shadow-[0_16px_38px_rgba(0,181,226,0.28)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_46px_rgba(0,210,196,0.35)] sm:min-h-[46px] sm:px-6 sm:text-sm"
+            >
+              Sign Up
+            </a>
+            <a
+              href="#contact"
+              class="hidden min-h-[46px] items-center justify-center rounded-full border border-teal/35 bg-teal/10 px-5 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/15 xl:inline-flex"
+            >
+              Get Started
+            </a>
+          </div>
+        </div>
+
+        <nav
+          class="flex items-center gap-5 overflow-x-auto border-t border-white/10 py-3 text-xs font-bold text-white/75 md:hidden"
+          aria-label="Mobile navigation"
+        >
+          <a
+            href="#home"
+            class="shrink-0 transition-colors duration-300 hover:text-white"
+            >Home</a
+          >
+          <a
+            href="#services"
+            class="shrink-0 transition-colors duration-300 hover:text-white"
+            >Services</a
+          >
+          <a
+            href="#pricing"
+            class="shrink-0 transition-colors duration-300 hover:text-white"
+            >Pricing</a
+          >
+          <a
+            href="#portfolio"
+            class="shrink-0 transition-colors duration-300 hover:text-white"
+            >Portfolio</a
+          >
+          <a
+            href="#contact"
+            class="shrink-0 transition-colors duration-300 hover:text-white"
+            >Contact</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section
+        id="home"
+        class="mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-20 pt-40 sm:px-8 md:pt-36 lg:grid-cols-[1.04fr_.82fr] lg:px-10 lg:pb-24 lg:pt-32"
+      >
+        <div class="order-2 lg:order-1">
+          <div
+            class="mb-4 inline-flex items-center gap-3 text-xs font-extrabold uppercase text-teal"
+          >
+            <span
+              class="h-px w-9 rounded-full bg-gradient-to-r from-teal to-cyan"
+            ></span>
+            Premium web studio
+          </div>
+          <h1
+            class="max-w-4xl text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          >
+            We Turn Your Vision Into A Premium Digital Experience.
+          </h1>
+          <p
+            class="mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg"
+          >
+            Danah Web &mdash; A modern web development studio crafting fast,
+            responsive, and conversion-focused websites.
+          </p>
+          <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="#contact"
+              class="inline-flex min-h-[50px] items-center justify-center rounded-full bg-gradient-to-r from-teal to-cyan px-7 text-sm font-extrabold text-white shadow-[0_18px_42px_rgba(0,181,226,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(0,210,196,0.36)]"
+            >
+              Free Consultation
+            </a>
+            <a
+              href="#portfolio"
+              class="inline-flex min-h-[50px] items-center justify-center rounded-full border border-white/45 bg-white/[0.03] px-7 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/10"
+            >
+              View Work
+            </a>
+          </div>
+
+          <div
+            class="mt-12 grid max-w-2xl grid-cols-1 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-2xl sm:grid-cols-3"
+          >
+            <div class="border-b border-white/10 p-5 sm:border-b-0 sm:border-r">
+              <strong class="block text-2xl leading-none text-white">01</strong>
+              <span class="mt-2 block text-xs font-semibold text-white/58"
+                >Strategy first builds</span
+              >
+            </div>
+            <div class="border-b border-white/10 p-5 sm:border-b-0 sm:border-r">
+              <strong class="block text-2xl leading-none text-white"
+                >98%</strong
+              >
+              <span class="mt-2 block text-xs font-semibold text-white/58"
+                >Responsive polish</span
+              >
+            </div>
+            <div class="p-5">
+              <strong class="block text-2xl leading-none text-white"
+                >24/7</strong
+              >
+              <span class="mt-2 block text-xs font-semibold text-white/58"
+                >Digital presence</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative order-1 mx-auto aspect-square w-full max-w-[320px] sm:max-w-[380px] lg:order-2 lg:max-w-[460px]"
+        >
+          <div
+            class="absolute inset-0 rotate-12 rounded-[2.2rem] border border-teal/25"
+          ></div>
+          <div
+            class="absolute inset-8 -rotate-12 rounded-full border border-white/15"
+          ></div>
+          <div
+            class="animate-float absolute inset-10 overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.08] shadow-[0_30px_80px_rgba(0,0,0,0.36)] backdrop-blur-2xl"
+          >
+            <div
+              class="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent)] animate-shimmer"
+            ></div>
+            <div
+              class="relative m-6 rounded-2xl border border-white/10 bg-[#05091f]/80 p-5"
+            >
+              <div class="mb-7 flex gap-2">
+                <span
+                  class="h-3 w-3 rounded-full bg-teal shadow-[0_0_18px_rgba(0,210,196,.9)]"
+                ></span>
+                <span class="h-3 w-3 rounded-full bg-white/80"></span>
+                <span
+                  class="h-3 w-3 rounded-full bg-cyan shadow-[0_0_18px_rgba(0,181,226,.8)]"
+                ></span>
+              </div>
+              <div class="space-y-4">
+                <span
+                  class="block h-3 w-10/12 rounded-full bg-gradient-to-r from-teal to-cyan"
+                ></span>
+                <span
+                  class="ml-8 block h-3 w-8/12 rounded-full bg-white/20"
+                ></span>
+                <span class="block h-3 w-9/12 rounded-full bg-cyan/50"></span>
+                <span
+                  class="ml-8 block h-3 w-7/12 rounded-full bg-white/18"
+                ></span>
+                <span
+                  class="block h-3 w-11/12 rounded-full bg-gradient-to-r from-teal/90 to-cyan/25"
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute right-0 top-8 inline-flex min-h-[42px] items-center rounded-full border border-white/15 bg-white/[0.09] px-4 text-xs font-extrabold text-white shadow-xl backdrop-blur-2xl"
+          >
+            &lt;/&gt;
+          </div>
+          <div
+            class="absolute bottom-14 left-0 inline-flex min-h-[42px] items-center rounded-full border border-white/15 bg-white/[0.09] px-4 text-xs font-extrabold text-white shadow-xl backdrop-blur-2xl"
+          >
+            UI
+          </div>
+          <div
+            class="absolute bottom-28 right-3 inline-flex min-h-[42px] items-center rounded-full border border-teal/30 bg-teal/15 px-4 text-xs font-extrabold text-white shadow-xl backdrop-blur-2xl"
+          >
+            SEO
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="py-20 sm:py-24 lg:py-28">
+        <div class="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div class="mb-12 max-w-3xl">
+            <div
+              class="mb-4 inline-flex items-center gap-3 text-xs font-extrabold uppercase text-teal"
+            >
+              <span
+                class="h-px w-9 rounded-full bg-gradient-to-r from-teal to-cyan"
+              ></span>
+              Services
+            </div>
+            <h2
+              class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl"
+            >
+              Built to look sharp, load fast, and help visitors take action.
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <article
+              class="rounded-2xl border border-white/10 bg-white/[0.07] p-6 shadow-inner shadow-white/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/60 hover:bg-teal/[0.08]"
+            >
+              <div
+                class="mb-7 grid h-14 w-14 place-items-center rounded-2xl border border-teal/30 bg-teal/10 text-teal"
+              >
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold leading-tight">
+                Fast &amp; Responsive Websites
+              </h3>
+              <p class="mt-4 text-sm leading-7 text-white/62">
+                Fluid layouts and clean performance choices that feel smooth
+                across phones, tablets, and desktops.
+              </p>
+            </article>
+
+            <article
+              class="rounded-2xl border border-white/10 bg-white/[0.07] p-6 shadow-inner shadow-white/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/60 hover:bg-teal/[0.08]"
+            >
+              <div
+                class="mb-7 grid h-14 w-14 place-items-center rounded-2xl border border-teal/30 bg-teal/10 text-teal"
+              >
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 5h16M4 12h16M4 19h10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold leading-tight">
+                Clean &amp; Modern Designs
+              </h3>
+              <p class="mt-4 text-sm leading-7 text-white/62">
+                High-contrast visuals, refined spacing, and premium interfaces
+                tailored to your brand identity.
+              </p>
+            </article>
+
+            <article
+              class="rounded-2xl border border-white/10 bg-white/[0.07] p-6 shadow-inner shadow-white/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/60 hover:bg-teal/[0.08]"
+            >
+              <div
+                class="mb-7 grid h-14 w-14 place-items-center rounded-2xl border border-teal/30 bg-teal/10 text-teal"
+              >
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10.5 18a7.5 7.5 0 1 1 5.3-2.2L21 21"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="m8 11 2 2 4-5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold leading-tight">
+                SEO-Friendly Structures
+              </h3>
+              <p class="mt-4 text-sm leading-7 text-white/62">
+                Semantic sections, readable content hierarchy, and technical
+                foundations search engines can understand.
+              </p>
+            </article>
+
+            <article
+              class="rounded-2xl border border-white/10 bg-white/[0.07] p-6 shadow-inner shadow-white/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/60 hover:bg-teal/[0.08]"
+            >
+              <div
+                class="mb-7 grid h-14 w-14 place-items-center rounded-2xl border border-teal/30 bg-teal/10 text-teal"
+              >
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 19V5m0 14h16M8 16l3-4 3 2 5-7"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold leading-tight">
+                Conversion-Focused Experiences
+              </h3>
+              <p class="mt-4 text-sm leading-7 text-white/62">
+                Clear calls to action, persuasive page flow, and frictionless
+                forms shaped around business outcomes.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="pricing"
+        class="border-y border-white/10 bg-white/[0.025] py-20 sm:py-24 lg:py-28"
+      >
+        <div class="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <div
+              class="mb-4 inline-flex items-center justify-center gap-3 text-xs font-extrabold uppercase text-teal"
+            >
+              <span
+                class="h-px w-9 rounded-full bg-gradient-to-r from-teal to-cyan"
+              ></span>
+              Pricing
+              <span
+                class="h-px w-9 rounded-full bg-gradient-to-r from-cyan to-teal"
+              ></span>
+            </div>
+            <h2
+              class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl"
+            >
+              Flexible packages for every stage of growth.
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-center">
+            <article
+              class="rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-inner shadow-white/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/45"
+            >
+              <p class="text-sm font-extrabold uppercase text-teal">Basic</p>
+              <div class="mt-5 flex items-end gap-2">
+                <span class="text-4xl font-extrabold">$499</span>
+                <span class="pb-1 text-sm font-semibold text-white/55"
+                  >starting</span
+                >
+              </div>
+              <p class="mt-4 text-sm leading-7 text-white/62">
+                A clean, responsive launch page for new brands and simple
+                campaigns.
+              </p>
+              <ul class="mt-7 space-y-4 text-sm font-medium text-white/72">
+                <li class="flex gap-3">
+                  <span class="text-teal">✓</span> One-page landing site
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-teal">✓</span> Mobile-first layout
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-teal">✓</span> Contact form setup
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="mt-8 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/25 bg-white/[0.04] px-6 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/10"
+                >Start Basic</a
+              >
+            </article>
+
+            <article
+              class="relative overflow-hidden rounded-2xl border border-transparent bg-white/[0.08] p-7 shadow-[0_26px_75px_rgba(0,181,226,0.22)] backdrop-blur-2xl transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-br before:from-teal before:via-white/25 before:to-cyan before:opacity-80 after:absolute after:inset-[1px] after:rounded-[15px] after:bg-navy/90 hover:-translate-y-2 lg:scale-105"
+            >
+              <div class="relative z-10">
+                <div class="mb-5 flex items-center justify-between gap-4">
+                  <p class="text-sm font-extrabold uppercase text-teal">Pro</p>
+                  <span
+                    class="rounded-full bg-gradient-to-r from-teal to-cyan px-4 py-2 text-xs font-extrabold text-white shadow-[0_10px_30px_rgba(0,210,196,0.28)]"
+                    >Most Popular</span
+                  >
+                </div>
+                <div class="flex items-end gap-2">
+                  <span class="text-5xl font-extrabold">$999</span>
+                  <span class="pb-1 text-sm font-semibold text-white/55"
+                    >starting</span
+                  >
+                </div>
+                <p class="mt-4 text-sm leading-7 text-white/68">
+                  A polished website experience with stronger structure, visual
+                  depth, and conversion flow.
+                </p>
+                <ul class="mt-7 space-y-4 text-sm font-medium text-white/78">
+                  <li class="flex gap-3">
+                    <span class="text-teal">✓</span> Up to 5 custom sections
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="text-teal">✓</span> SEO-ready page structure
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="text-teal">✓</span> Portfolio or service
+                    showcase
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="text-teal">✓</span> Speed and UX refinements
+                  </li>
+                </ul>
+                <a
+                  href="#contact"
+                  class="mt-8 inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-gradient-to-r from-teal to-cyan px-6 text-sm font-extrabold text-white shadow-[0_18px_42px_rgba(0,181,226,0.32)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(0,210,196,0.38)]"
+                  >Choose Pro</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-inner shadow-white/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/45"
+            >
+              <p class="text-sm font-extrabold uppercase text-teal">
+                Enterprise
+              </p>
+              <div class="mt-5 flex items-end gap-2">
+                <span class="text-4xl font-extrabold">Custom</span>
+              </div>
+              <p class="mt-4 text-sm leading-7 text-white/62">
+                A tailored digital system for brands that need deeper pages,
+                integrations, or ongoing support.
+              </p>
+              <ul class="mt-7 space-y-4 text-sm font-medium text-white/72">
+                <li class="flex gap-3">
+                  <span class="text-teal">✓</span> Multi-page experience
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-teal">✓</span> Advanced integrations
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-teal">✓</span> Analytics and optimization
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-teal">✓</span> Priority support
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="mt-8 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/25 bg-white/[0.04] px-6 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/10"
+                >Talk to Us</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="py-20 sm:py-24 lg:py-28">
+        <div class="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div class="mb-12 max-w-3xl">
+            <div
+              class="mb-4 inline-flex items-center gap-3 text-xs font-extrabold uppercase text-teal"
+            >
+              <span
+                class="h-px w-9 rounded-full bg-gradient-to-r from-teal to-cyan"
+              ></span>
+              Selected Works
+            </div>
+            <h2
+              class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl"
+            >
+              Project tiles built for live URLs when you are ready.
+            </h2>
+          </div>
+
+          <div
+            class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:auto-rows-[17rem] lg:grid-cols-3"
+          >
+            <a
+              href="#"
+              class="group flex min-h-[24rem] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/55 lg:row-span-2 lg:min-h-0"
+            >
+              <div class="relative flex-1 overflow-hidden">
+                <img
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt="Fintech dashboard thumbnail"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Crect width='900' height='700' fill='%230A0F2C'/%3E%3Crect x='84' y='94' width='732' height='470' rx='34' fill='%23101842' stroke='%2300D2C4' stroke-opacity='.45'/%3E%3Cpath d='M140 190h250M140 250h420M140 310h330M140 370h510' stroke='%2300B5E2' stroke-width='16' stroke-linecap='round' opacity='.72'/%3E%3Ccircle cx='710' cy='182' r='76' fill='%2300D2C4' opacity='.24'/%3E%3Cpath d='M142 470h610' stroke='%23FFFFFF' stroke-opacity='.18' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E"
+                />
+                <div
+                  class="absolute inset-0 grid place-items-center bg-gradient-to-t from-teal/80 via-cyan/35 to-transparent p-6 text-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+                >
+                  <p
+                    class="translate-y-4 text-sm font-semibold leading-7 text-white transition-transform duration-300 group-hover:translate-y-0"
+                  >
+                    A premium dashboard concept with sharp metric cards and fast
+                    decision paths.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 p-5">
+                <h3 class="text-lg font-bold">Fintech Dashboard</h3>
+                <span
+                  class="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full border border-teal/40 px-4 text-xs font-extrabold text-teal transition-all duration-300 group-hover:bg-teal group-hover:text-navy"
+                  >View Live</span
+                >
+              </div>
+            </a>
+
+            <a
+              href="#"
+              class="group flex min-h-[24rem] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/55 lg:min-h-0"
+            >
+              <div class="relative flex-1 overflow-hidden">
+                <img
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt="Luxury product store thumbnail"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='620' viewBox='0 0 900 620'%3E%3Crect width='900' height='620' fill='%230A0F2C'/%3E%3Cpath d='M120 120h660v360H120z' fill='%23101842' stroke='%2300B5E2' stroke-opacity='.42'/%3E%3Ccircle cx='300' cy='290' r='105' fill='%2300D2C4' opacity='.18'/%3E%3Cpath d='M500 210h170M500 270h230M500 330h150' stroke='%23FFFFFF' stroke-opacity='.28' stroke-width='16' stroke-linecap='round'/%3E%3Cpath d='M500 405h120' stroke='%2300D2C4' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E"
+                />
+                <div
+                  class="absolute inset-0 grid place-items-center bg-gradient-to-t from-teal/80 via-cyan/35 to-transparent p-6 text-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+                >
+                  <p
+                    class="translate-y-4 text-sm font-semibold leading-7 text-white transition-transform duration-300 group-hover:translate-y-0"
+                  >
+                    A polished ecommerce layout with premium product focus and
+                    clean checkout intent.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 p-5">
+                <h3 class="text-lg font-bold">Luxury Product Store</h3>
+                <span
+                  class="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full border border-teal/40 px-4 text-xs font-extrabold text-teal transition-all duration-300 group-hover:bg-teal group-hover:text-navy"
+                  >View Live</span
+                >
+              </div>
+            </a>
+
+            <a
+              href="#"
+              class="group flex min-h-[24rem] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/55 lg:min-h-0"
+            >
+              <div class="relative flex-1 overflow-hidden">
+                <img
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt="SaaS growth page thumbnail"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='620' viewBox='0 0 900 620'%3E%3Crect width='900' height='620' fill='%230A0F2C'/%3E%3Crect x='90' y='100' width='720' height='420' rx='28' fill='%23101842' stroke='%23FFFFFF' stroke-opacity='.15'/%3E%3Cpath d='M160 205h310M160 260h250M160 370h170' stroke='%2300D2C4' stroke-width='18' stroke-linecap='round'/%3E%3Cpath d='M570 180l110 120-130 110' fill='none' stroke='%2300B5E2' stroke-width='28' stroke-linecap='round' stroke-linejoin='round' opacity='.65'/%3E%3C/svg%3E"
+                />
+                <div
+                  class="absolute inset-0 grid place-items-center bg-gradient-to-t from-teal/80 via-cyan/35 to-transparent p-6 text-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+                >
+                  <p
+                    class="translate-y-4 text-sm font-semibold leading-7 text-white transition-transform duration-300 group-hover:translate-y-0"
+                  >
+                    A conversion-focused SaaS page with crisp sections and
+                    focused CTA hierarchy.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 p-5">
+                <h3 class="text-lg font-bold">SaaS Growth Page</h3>
+                <span
+                  class="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full border border-teal/40 px-4 text-xs font-extrabold text-teal transition-all duration-300 group-hover:bg-teal group-hover:text-navy"
+                  >View Live</span
+                >
+              </div>
+            </a>
+
+            <a
+              href="#"
+              class="group flex min-h-[24rem] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/55 lg:row-span-2 lg:min-h-0"
+            >
+              <div class="relative flex-1 overflow-hidden">
+                <img
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt="Creative studio thumbnail"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Crect width='900' height='700' fill='%230A0F2C'/%3E%3Cpath d='M110 150h680v400H110z' fill='%23101842' stroke='%2300D2C4' stroke-opacity='.35'/%3E%3Cpath d='M170 490 330 250l130 160 90-110 180 190Z' fill='%2300B5E2' opacity='.28'/%3E%3Cpath d='M190 190h280M190 240h190' stroke='%23FFFFFF' stroke-opacity='.3' stroke-width='18' stroke-linecap='round'/%3E%3Ccircle cx='690' cy='230' r='58' fill='%2300D2C4' opacity='.32'/%3E%3C/svg%3E"
+                />
+                <div
+                  class="absolute inset-0 grid place-items-center bg-gradient-to-t from-teal/80 via-cyan/35 to-transparent p-6 text-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+                >
+                  <p
+                    class="translate-y-4 text-sm font-semibold leading-7 text-white transition-transform duration-300 group-hover:translate-y-0"
+                  >
+                    A striking brand site concept with bold project storytelling
+                    and immersive visuals.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 p-5">
+                <h3 class="text-lg font-bold">Creative Studio</h3>
+                <span
+                  class="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full border border-teal/40 px-4 text-xs font-extrabold text-teal transition-all duration-300 group-hover:bg-teal group-hover:text-navy"
+                  >View Live</span
+                >
+              </div>
+            </a>
+
+            <a
+              href="#"
+              class="group flex min-h-[24rem] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/55 lg:min-h-0"
+            >
+              <div class="relative flex-1 overflow-hidden">
+                <img
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt="Founder personal site thumbnail"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='620' viewBox='0 0 900 620'%3E%3Crect width='900' height='620' fill='%230A0F2C'/%3E%3Crect x='120' y='100' width='270' height='420' rx='34' fill='%2300D2C4' opacity='.18'/%3E%3Cpath d='M470 180h250M470 240h180M470 345h270M470 405h210' stroke='%23FFFFFF' stroke-opacity='.28' stroke-width='17' stroke-linecap='round'/%3E%3Cpath d='M470 480h135' stroke='%2300B5E2' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E"
+                />
+                <div
+                  class="absolute inset-0 grid place-items-center bg-gradient-to-t from-teal/80 via-cyan/35 to-transparent p-6 text-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+                >
+                  <p
+                    class="translate-y-4 text-sm font-semibold leading-7 text-white transition-transform duration-300 group-hover:translate-y-0"
+                  >
+                    A personal brand layout that turns expertise, trust, and
+                    proof into a clean story.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 p-5">
+                <h3 class="text-lg font-bold">Founder Personal Site</h3>
+                <span
+                  class="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full border border-teal/40 px-4 text-xs font-extrabold text-teal transition-all duration-300 group-hover:bg-teal group-hover:text-navy"
+                  >View Live</span
+                >
+              </div>
+            </a>
+
+            <a
+              href="#"
+              class="group flex min-h-[24rem] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal/55 lg:min-h-0"
+            >
+              <div class="relative flex-1 overflow-hidden">
+                <img
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt="Booking flow thumbnail"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='620' viewBox='0 0 900 620'%3E%3Crect width='900' height='620' fill='%230A0F2C'/%3E%3Crect x='115' y='110' width='670' height='400' rx='30' fill='%23101842' stroke='%2300B5E2' stroke-opacity='.42'/%3E%3Cpath d='M180 210h540M180 300h540M180 390h340' stroke='%23FFFFFF' stroke-opacity='.18' stroke-width='46' stroke-linecap='round'/%3E%3Cpath d='M620 390h100' stroke='%2300D2C4' stroke-width='46' stroke-linecap='round'/%3E%3C/svg%3E"
+                />
+                <div
+                  class="absolute inset-0 grid place-items-center bg-gradient-to-t from-teal/80 via-cyan/35 to-transparent p-6 text-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+                >
+                  <p
+                    class="translate-y-4 text-sm font-semibold leading-7 text-white transition-transform duration-300 group-hover:translate-y-0"
+                  >
+                    A booking interface concept designed to make service
+                    inquiries quick and confident.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 p-5">
+                <h3 class="text-lg font-bold">Appointment Flow</h3>
+                <span
+                  class="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full border border-teal/40 px-4 text-xs font-extrabold text-teal transition-all duration-300 group-hover:bg-teal group-hover:text-navy"
+                  >View Live</span
+                >
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="border-y border-white/10 bg-white/[0.025] py-20 sm:py-24 lg:py-28"
+      >
+        <div
+          class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 sm:px-8 lg:grid-cols-[.85fr_1fr] lg:px-10"
+        >
+          <div class="pt-2">
+            <div
+              class="mb-4 inline-flex items-center gap-3 text-xs font-extrabold uppercase text-teal"
+            >
+              <span
+                class="h-px w-9 rounded-full bg-gradient-to-r from-teal to-cyan"
+              ></span>
+              Contact
+            </div>
+            <h2
+              class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl"
+            >
+              Ready to level up your online game?
+            </h2>
+            <p class="mt-6 max-w-xl text-base leading-8 text-white/64">
+              Tell Danah Web where you want to go next. We will help shape the
+              strategy, design, and build into a digital experience that feels
+              premium from the first click.
+            </p>
+          </div>
+
+          <form
+            data-contact-form
+            class="rounded-2xl border border-white/10 bg-white/[0.07] p-6 shadow-inner shadow-white/5 backdrop-blur-2xl sm:p-8"
+          >
+            <div class="grid gap-5">
+              <label class="grid gap-2 text-sm font-bold text-white/82">
+                Name
+                <input
+                  required
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  class="min-h-[50px] rounded-xl border border-teal/35 bg-[#05091f]/80 px-4 text-sm font-medium text-white outline-none transition-all duration-300 placeholder:text-white/38 focus:border-teal focus:bg-[#060c26] focus:ring-4 focus:ring-teal/15"
+                />
+              </label>
+              <label class="grid gap-2 text-sm font-bold text-white/82">
+                Email
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  class="min-h-[50px] rounded-xl border border-teal/35 bg-[#05091f]/80 px-4 text-sm font-medium text-white outline-none transition-all duration-300 placeholder:text-white/38 focus:border-teal focus:bg-[#060c26] focus:ring-4 focus:ring-teal/15"
+                />
+              </label>
+              <label class="grid gap-2 text-sm font-bold text-white/82">
+                Message
+                <textarea
+                  required
+                  name="message"
+                  placeholder="Tell us about your project"
+                  class="min-h-[140px] resize-y rounded-xl border border-teal/35 bg-[#05091f]/80 px-4 py-4 text-sm font-medium text-white outline-none transition-all duration-300 placeholder:text-white/38 focus:border-teal focus:bg-[#060c26] focus:ring-4 focus:ring-teal/15"
+                ></textarea>
+              </label>
+
+              <div
+                data-success
+                class="hidden rounded-xl border border-teal/35 bg-teal/10 px-4 py-3 text-sm font-bold text-teal"
+              >
+                Message sent successfully. Danah Web will get back to you soon.
+              </div>
+
+              <button
+                data-send-button
+                type="submit"
+                class="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-gradient-to-r from-teal to-cyan px-7 text-sm font-extrabold text-white shadow-[0_18px_42px_rgba(0,181,226,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(0,210,196,0.36)]"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-12">
+      <div class="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+        <div
+          class="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 md:grid-cols-[1.15fr_.7fr_.85fr]"
+        >
+          <div>
+            <a
+              href="#home"
+              class="inline-flex items-center"
+              aria-label="Danah Web home"
+            >
+              <img
+                src="danah-web-bgc.png"
+                alt="Danah Web"
+                class="h-10 w-auto max-w-[150px] object-contain sm:h-12 sm:max-w-[180px]"
+              />
+            </a>
+            <p class="mt-5 max-w-md text-sm leading-7 text-white/60">
+              Creating fast, responsive, and conversion-focused websites for
+              brands that want a premium digital presence.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-extrabold">Quick Links</h3>
+            <nav
+              class="mt-5 grid gap-3 text-sm font-semibold text-white/62"
+              aria-label="Footer navigation"
+            >
+              <a
+                href="#home"
+                class="transition-colors duration-300 hover:text-white"
+                >Home</a
+              >
+              <a
+                href="#services"
+                class="transition-colors duration-300 hover:text-white"
+                >Services</a
+              >
+              <a
+                href="#pricing"
+                class="transition-colors duration-300 hover:text-white"
+                >Pricing</a
+              >
+              <a
+                href="#portfolio"
+                class="transition-colors duration-300 hover:text-white"
+                >Portfolio</a
+              >
+              <a
+                href="#contact"
+                class="transition-colors duration-300 hover:text-white"
+                >Contact</a
+              >
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="text-base font-extrabold">Connect</h3>
+            <div class="mt-5 flex gap-3">
+              <a
+                href="#"
+                aria-label="GitHub"
+                class="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/10 hover:text-teal"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 .5a12 12 0 0 0-3.8 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.46 11.46 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                class="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/10 hover:text-teal"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="3.5"
+                    y="3.5"
+                    width="17"
+                    height="17"
+                    rx="5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="3.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M17.5 6.8h.01"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </a>
+              <a
+                href="mailto:hello@danahweb.com"
+                aria-label="Gmail"
+                class="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal hover:bg-teal/10 hover:text-teal"
+              >
+                <svg
+                  width="23"
+                  height="23"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 7.5v9A2.5 2.5 0 0 0 6.5 19h11A2.5 2.5 0 0 0 20 16.5v-9"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M4.5 7 12 13l7.5-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5 17V8.2l7 5.6 7-5.6V17"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                    opacity=".7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <p class="pt-6 text-sm font-medium text-white/50">
+          Copyright &copy; 2026 Danah Web. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const contactForm = document.querySelector("[data-contact-form]");
+      const successMessage = document.querySelector("[data-success]");
+      const sendButton = document.querySelector("[data-send-button]");
+
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        successMessage.classList.remove("hidden");
+        sendButton.textContent = "Message Sent";
+        sendButton.classList.add("ring-4", "ring-teal/25", "scale-[0.99]");
+        sendButton.setAttribute("disabled", "true");
+      });
+    </script>
+  </body>
+</html>

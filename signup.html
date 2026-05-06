@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>Sign Up | Danah Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Montserrat", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              navy: "#0A0F2C",
+              teal: "#00D2C4",
+              cyan: "#00B5E2",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+                "50%": { transform: "translateY(-18px) rotate(1.5deg)" },
+              },
+              shimmer: {
+                "0%": { transform: "translateX(-120%)" },
+                "100%": { transform: "translateX(120%)" },
+              },
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              shimmer: "shimmer 3.5s ease-in-out infinite",
+            },
+          },
+        },
+      };
+
+      // Prevent auto-reload from development tools
+      if (window.location.protocol === "file:") {
+        // Check for Live Server
+        if (
+          window.location.port === "5500" ||
+          document.querySelector('script[src*="live-server"]')
+        ) {
+          console.warn(
+            "⚠️ Live Server detected! This may cause auto-reloads. Consider disabling Live Server extension in VS Code.",
+          );
+        }
+
+        // Disable Live Server auto-refresh
+        window.addEventListener("beforeunload", function (e) {
+          // Prevent page refresh
+          e.preventDefault();
+          e.returnValue = "";
+        });
+
+        // Override any auto-refresh attempts
+        const originalLocation = window.location;
+        window.location = {
+          ...originalLocation,
+          reload: function () {
+            console.log("Auto-reload prevented");
+          },
+          replace: originalLocation.replace.bind(originalLocation),
+          assign: originalLocation.assign.bind(originalLocation),
+        };
+      }
+
+      // Prevent form double-submission
+      let isSubmitting = false;
+    </script>
+  </head>
+  <body
+    class="min-h-screen overflow-x-hidden bg-navy font-sans text-white antialiased selection:bg-teal/30 selection:text-white"
+  >
+    <section
+      id="signup"
+      class="relative flex min-h-screen scroll-mt-24 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_78%_12%,rgba(0,210,196,0.18),transparent_28rem),radial-gradient(circle_at_10%_80%,rgba(0,181,226,0.14),transparent_26rem),#0A0F2C] px-6 py-28 sm:px-10"
+    >
+      <div
+        class="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px)] [background-size:58px_58px] [mask-image:linear-gradient(to_bottom,black,transparent_88%)]"
+      ></div>
+      <div
+        class="pointer-events-none absolute -right-44 top-20 h-[28rem] w-[28rem] rotate-45 border border-teal/20 bg-teal/[0.035]"
+      ></div>
+      <div
+        class="pointer-events-none absolute -left-44 bottom-10 h-[24rem] w-[24rem] -rotate-12 border border-cyan/20 bg-cyan/[0.035]"
+      ></div>
+
+      <div class="relative z-10 w-full max-w-[500px]">
+        <a
+          href="index.html#home"
+          class="mb-7 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 text-sm font-bold text-white/78 backdrop-blur-xl transition-all duration-300 hover:-translate-x-1 hover:border-teal/60 hover:bg-teal/10 hover:text-white"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M19 12H5m0 0 6-6m-6 6 6 6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Back to Home
+        </a>
+
+        <form
+          id="signupForm"
+          action="#"
+          method="post"
+          class="rounded-[1.6rem] border border-teal/30 bg-white/[0.075] p-6 shadow-[0_0_60px_rgba(0,210,196,0.14),0_28px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl sm:p-8"
+        >
+          <div class="mb-8 text-center">
+            <div
+              class="mx-auto mb-5 inline-flex items-center justify-center gap-3"
+            >
+              <img
+                src="danah-web-bgc.png"
+                alt="Danah Web"
+                class="h-12 w-auto max-w-[150px] rounded-xl object-contain"
+              />
+              <span class="text-lg font-extrabold text-white">Danah Web</span>
+            </div>
+            <h2 class="text-3xl font-extrabold leading-tight sm:text-4xl">
+              Start Your Digital Journey.
+            </h2>
+            <p class="mt-3 text-sm leading-6 text-white/58">
+              Create your account and start planning a premium website with
+              Danah Web.
+            </p>
+          </div>
+
+          <div class="grid gap-5">
+            <label class="grid gap-2 text-sm font-bold text-white/82">
+              Mobile Number
+              <div
+                class="flex min-h-[54px] overflow-hidden rounded-xl border border-teal/35 bg-[#05091f]/80 transition-all duration-300 focus-within:border-teal focus-within:shadow-[0_0_30px_rgba(0,210,196,0.18)] focus-within:ring-4 focus-within:ring-teal/15"
+              >
+                <select
+                  name="country_code"
+                  aria-label="Country code"
+                  class="w-[112px] border-r border-white/10 bg-transparent px-3 text-sm font-bold text-white outline-none"
+                >
+                  <option value="+91" selected class="bg-navy text-white">
+                    India +91
+                  </option>
+                  <option value="+1" class="bg-navy text-white">US +1</option>
+                  <option value="+44" class="bg-navy text-white">UK +44</option>
+                  <option value="+971" class="bg-navy text-white">
+                    UAE +971
+                  </option>
+                </select>
+                <input
+                  required
+                  type="tel"
+                  name="mobile"
+                  placeholder="98765 43210"
+                  autocomplete="tel"
+                  class="min-w-0 flex-1 bg-transparent px-4 text-sm font-medium text-white outline-none placeholder:text-white/38"
+                />
+              </div>
+            </label>
+
+            <div class="relative">
+              <input
+                required
+                id="signup-email"
+                type="email"
+                name="email"
+                placeholder=" "
+                autocomplete="email"
+                class="peer min-h-[54px] w-full rounded-xl border border-teal/35 bg-[#05091f]/80 px-4 pb-1 pt-5 text-sm font-medium text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-teal focus:shadow-[0_0_30px_rgba(0,210,196,0.18)] focus:ring-4 focus:ring-teal/15"
+              />
+              <label
+                for="signup-email"
+                class="pointer-events-none absolute left-4 top-2 text-xs font-bold text-teal transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-white/46 peer-focus:top-2 peer-focus:text-xs peer-focus:text-teal"
+                >Email</label
+              >
+            </div>
+
+            <div class="relative">
+              <input
+                required
+                id="signup-password"
+                type="password"
+                name="password"
+                placeholder=" "
+                autocomplete="new-password"
+                minlength="8"
+                class="peer min-h-[54px] w-full rounded-xl border border-teal/35 bg-[#05091f]/80 px-4 pb-1 pt-5 text-sm font-medium text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-teal focus:shadow-[0_0_30px_rgba(0,210,196,0.18)] focus:ring-4 focus:ring-teal/15"
+              />
+              <label
+                for="signup-password"
+                class="pointer-events-none absolute left-4 top-2 text-xs font-bold text-teal transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-white/46 peer-focus:top-2 peer-focus:text-xs peer-focus:text-teal"
+                >Password</label
+              >
+            </div>
+
+            <div class="relative">
+              <input
+                required
+                id="signup-confirm-password"
+                type="password"
+                name="confirm_password"
+                placeholder=" "
+                autocomplete="new-password"
+                minlength="8"
+                class="peer min-h-[54px] w-full rounded-xl border border-teal/35 bg-[#05091f]/80 px-4 pb-1 pt-5 text-sm font-medium text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-teal focus:shadow-[0_0_30px_rgba(0,210,196,0.18)] focus:ring-4 focus:ring-teal/15"
+              />
+              <label
+                for="signup-confirm-password"
+                class="pointer-events-none absolute left-4 top-2 text-xs font-bold text-teal transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-white/46 peer-focus:top-2 peer-focus:text-xs peer-focus:text-teal"
+                >Confirm Password</label
+              >
+            </div>
+
+            <label
+              class="inline-flex min-h-[44px] items-start gap-3 text-sm font-semibold leading-6 text-white/68"
+            >
+              <input
+                required
+                type="checkbox"
+                name="terms"
+                class="mt-1 h-4 w-4 rounded border-white/20 bg-[#05091f] accent-teal"
+              />
+              <span
+                >I agree to the
+                <a
+                  href="#"
+                  class="font-extrabold text-teal transition-colors duration-300 hover:text-cyan"
+                  >Terms &amp; Conditions</a
+                >.</span
+              >
+            </label>
+
+            <button
+              type="submit"
+              class="inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-gradient-to-r from-teal to-cyan px-7 text-sm font-extrabold text-white shadow-[0_18px_42px_rgba(0,181,226,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(0,210,196,0.38)]"
+            >
+              Create Account
+            </button>
+          </div>
+
+          <div class="my-7 flex items-center gap-4">
+            <span class="h-px flex-1 bg-white/10"></span>
+            <span class="text-xs font-bold uppercase text-white/42"
+              >or continue with</span
+            >
+            <span class="h-px flex-1 bg-white/10"></span>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              class="inline-flex min-h-[50px] items-center justify-center gap-3 rounded-xl border border-white/12 bg-white/[0.055] px-4 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal/60 hover:bg-teal/10"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill="#EA4335"
+                  d="M12 10.2v3.9h5.5c-.2 1.3-1.7 3.9-5.5 3.9a6 6 0 0 1 0-12c1.9 0 3.2.8 3.9 1.5l2.7-2.6A9.8 9.8 0 0 0 12 2a10 10 0 1 0 0 20c5.8 0 9.6-4.1 9.6-9.8 0-.7-.1-1.2-.2-1.9H12Z"
+                />
+              </svg>
+              Continue with Google
+            </button>
+            <button
+              type="button"
+              class="inline-flex min-h-[50px] items-center justify-center gap-3 rounded-xl border border-white/12 bg-white/[0.055] px-4 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:border-teal/60 hover:bg-teal/10"
+            >
+              <svg
+                width="21"
+                height="21"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 .5a12 12 0 0 0-3.8 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.46 11.46 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"
+                />
+              </svg>
+              Continue with GitHub
+            </button>
+          </div>
+
+          <p class="mt-7 text-center text-sm font-medium text-white/58">
+            Already have an account?
+            <a
+              href="login.html"
+              class="font-extrabold text-teal transition-colors duration-300 hover:text-cyan"
+              >Login</a
+            >
+          </p>
+        </form>
+
+        <!-- Password Strength Indicator -->
+        <div
+          id="passwordStrength"
+          class="mt-4 rounded-lg border border-white/10 bg-white/[0.05] p-3 backdrop-blur-xl opacity-0 transition-all duration-300"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-white/60"
+              >Password Strength</span
+            >
+            <span id="strengthText" class="text-xs font-bold text-cyan"></span>
+          </div>
+          <div class="h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
+            <div
+              id="strengthBar"
+              class="h-full w-0 bg-gradient-to-r from-red-500 to-orange-500 transition-all duration-300"
+            ></div>
+          </div>
+          <ul class="mt-2 space-y-1 text-xs text-white/50">
+            <li id="check-length" class="flex items-center gap-2">
+              <span class="w-4">○</span> At least 8 characters
+            </li>
+            <li id="check-upper" class="flex items-center gap-2">
+              <span class="w-4">○</span> Uppercase letter (A-Z)
+            </li>
+            <li id="check-lower" class="flex items-center gap-2">
+              <span class="w-4">○</span> Lowercase letter (a-z)
+            </li>
+            <li id="check-number" class="flex items-center gap-2">
+              <span class="w-4">○</span> Number (0-9)
+            </li>
+            <li id="check-special" class="flex items-center gap-2">
+              <span class="w-4">○</span> Special character (!@#$%^&*)
+            </li>
+          </ul>
+        </div>
+
+        <!-- Success Notification -->
+        <div
+          id="successMessage"
+          class="pointer-events-none absolute top-6 left-6 opacity-0 transition-all duration-500 z-50"
+        >
+          <div
+            class="rounded-lg border border-teal/50 bg-teal/10 px-4 py-3 backdrop-blur-xl"
+          >
+            <p class="text-sm font-semibold text-teal">
+              ✓ Account created successfully!
+            </p>
+          </div>
+        </div>
+
+        <!-- Error Notification -->
+        <div
+          id="errorMessage"
+          class="pointer-events-none absolute top-6 right-6 opacity-0 transition-all duration-500 z-50"
+        >
+          <div
+            class="rounded-lg border border-red-500/50 bg-red-500/10 px-4 py-3 backdrop-blur-xl"
+          >
+            <p class="text-sm font-semibold text-red-400" id="errorText"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Signup Form Handler
+      const signupForm = document.getElementById("signupForm");
+      const mobileInput = document.querySelector('input[name="mobile"]');
+      const countryCodeSelect = document.querySelector(
+        'select[name="country_code"]',
+      );
+      const emailInput = document.getElementById("signup-email");
+      const passwordInput = document.getElementById("signup-password");
+      const confirmPasswordInput = document.getElementById(
+        "signup-confirm-password",
+      );
+      const termsCheckbox = document.querySelector('input[name="terms"]');
+      const passwordStrengthDiv = document.getElementById("passwordStrength");
+      const successMsg = document.getElementById("successMessage");
+      const errorMsg = document.getElementById("errorMessage");
+      const errorText = document.getElementById("errorText");
+
+      // Mobile number formatting
+      mobileInput.addEventListener("input", (e) => {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.length > 10) {
+          value = value.slice(0, 10);
+        }
+        e.target.value = value;
+      });
+
+      // Email validation
+      emailInput.addEventListener("blur", validateEmail);
+      emailInput.addEventListener("input", () => {
+        if (emailInput.classList.contains("border-red-500")) {
+          validateEmail();
+        }
+      });
+
+      function validateEmail() {
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!email) {
+          showFieldError(emailInput, "Email is required");
+          return false;
+        } else if (!emailRegex.test(email)) {
+          showFieldError(emailInput, "Invalid email format");
+          return false;
+        } else {
+          clearFieldError(emailInput);
+          return true;
+        }
+      }
+
+      // Password strength checker
+      passwordInput.addEventListener("input", checkPasswordStrength);
+      passwordInput.addEventListener("blur", validatePassword);
+
+      function checkPasswordStrength() {
+        const password = passwordInput.value;
+        const checks = {
+          length: password.length >= 8,
+          upper: /[A-Z]/.test(password),
+          lower: /[a-z]/.test(password),
+          number: /\d/.test(password),
+          special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
+        };
+
+        // Update check marks
+        updateCheck("check-length", checks.length);
+        updateCheck("check-upper", checks.upper);
+        updateCheck("check-lower", checks.lower);
+        updateCheck("check-number", checks.number);
+        updateCheck("check-special", checks.special);
+
+        // Calculate strength
+        const strength = Object.values(checks).filter(Boolean).length;
+        const strengthPercent = (strength / 5) * 100;
+        const strengthBar = document.getElementById("strengthBar");
+        const strengthText = document.getElementById("strengthText");
+
+        strengthBar.style.width = strengthPercent + "%";
+
+        if (password.length === 0) {
+          passwordStrengthDiv.classList.add("opacity-0");
+          clearFieldError(passwordInput);
+        } else {
+          passwordStrengthDiv.classList.remove("opacity-0");
+
+          if (strength <= 2) {
+            strengthText.textContent = "Weak";
+            strengthBar.className =
+              "h-full w-0 bg-gradient-to-r from-red-500 to-orange-500 transition-all duration-300";
+            showFieldError(passwordInput, "Password too weak");
+          } else if (strength <= 3) {
+            strengthText.textContent = "Fair";
+            strengthBar.className =
+              "h-full w-0 bg-gradient-to-r from-orange-500 to-yellow-500 transition-all duration-300";
+            showFieldError(passwordInput, "Password could be stronger");
+          } else if (strength === 4) {
+            strengthText.textContent = "Good";
+            strengthBar.className =
+              "h-full w-0 bg-gradient-to-r from-yellow-500 to-green-500 transition-all duration-300";
+            clearFieldError(passwordInput);
+          } else {
+            strengthText.textContent = "Strong";
+            strengthBar.className =
+              "h-full w-0 bg-gradient-to-r from-green-500 to-teal transition-all duration-300";
+            clearFieldError(passwordInput);
+          }
+        }
+
+        // Check if confirm password matches
+        if (confirmPasswordInput.value) {
+          validatePasswordMatch();
+        }
+      }
+
+      function updateCheck(id, isValid) {
+        const checkEl = document.getElementById(id);
+        if (isValid) {
+          checkEl.classList.add("text-teal");
+          checkEl.querySelector("span").textContent = "✓";
+        } else {
+          checkEl.classList.remove("text-teal");
+          checkEl.querySelector("span").textContent = "○";
+        }
+      }
+
+      function validatePassword() {
+        const password = passwordInput.value;
+        const checks = {
+          length: password.length >= 8,
+          upper: /[A-Z]/.test(password),
+          lower: /[a-z]/.test(password),
+          number: /\d/.test(password),
+          special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
+        };
+
+        const strength = Object.values(checks).filter(Boolean).length;
+
+        if (!password) {
+          showFieldError(passwordInput, "Password is required");
+          return false;
+        } else if (strength < 3) {
+          showFieldError(
+            passwordInput,
+            "Password must include uppercase, lowercase, number, and special character",
+          );
+          return false;
+        } else {
+          clearFieldError(passwordInput);
+          return true;
+        }
+      }
+
+      // Confirm password validation
+      confirmPasswordInput.addEventListener("input", validatePasswordMatch);
+      confirmPasswordInput.addEventListener("blur", validatePasswordMatch);
+
+      function validatePasswordMatch() {
+        if (!confirmPasswordInput.value) {
+          showFieldError(confirmPasswordInput, "Please confirm password");
+          return false;
+        } else if (passwordInput.value !== confirmPasswordInput.value) {
+          showFieldError(confirmPasswordInput, "Passwords do not match");
+          return false;
+        } else {
+          clearFieldError(confirmPasswordInput);
+          return true;
+        }
+      }
+
+      // Mobile validation
+      function validateMobile() {
+        const mobile = mobileInput.value.trim();
+
+        if (!mobile) {
+          showFieldError(
+            mobileInput.parentElement,
+            "Mobile number is required",
+          );
+          return false;
+        } else if (mobile.length < 10) {
+          showFieldError(
+            mobileInput.parentElement,
+            "Mobile number must be at least 10 digits",
+          );
+          return false;
+        } else {
+          clearFieldError(mobileInput.parentElement);
+          return true;
+        }
+      }
+
+      mobileInput.addEventListener("blur", validateMobile);
+      mobileInput.addEventListener("input", () => {
+        if (mobileInput.parentElement.classList.contains("border-red-500")) {
+          validateMobile();
+        }
+      });
+
+      function showFieldError(field, message) {
+        const container = field.classList ? field : field;
+        container.classList.add(
+          "border-red-500",
+          "focus-within:border-red-500",
+        );
+      }
+
+      function clearFieldError(field) {
+        const container = field.classList ? field : field;
+        container.classList.remove(
+          "border-red-500",
+          "focus-within:border-red-500",
+        );
+      }
+
+      function showNotification(message, isSuccess = true) {
+        const notification = isSuccess ? successMsg : errorMsg;
+        if (!isSuccess) {
+          errorText.textContent = message;
+        }
+        notification.classList.remove("opacity-0");
+        notification.classList.add("opacity-100");
+
+        setTimeout(() => {
+          notification.classList.remove("opacity-100");
+          notification.classList.add("opacity-0");
+        }, 4000);
+      }
+
+      // Form submission
+      signupForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Prevent double submission
+        if (isSubmitting) {
+          return;
+        }
+
+        if (
+          !validateEmail() ||
+          !validatePassword() ||
+          !validatePasswordMatch() ||
+          !validateMobile()
+        ) {
+          showNotification("Please fill in all fields correctly", false);
+          return;
+        }
+
+        if (!termsCheckbox.checked) {
+          showNotification("Please accept Terms & Conditions", false);
+          return;
+        }
+
+        isSubmitting = true;
+
+        const submitBtn = signupForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Creating Account...";
+        submitBtn.style.opacity = "0.7";
+
+        try {
+          const response = await fetch(
+            "http://localhost:5000/api/auth/signup",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                fullName:
+                  document.querySelector('input[name="fullName"]')?.value ||
+                  "User",
+                email: emailInput.value,
+                mobile: mobileInput.value,
+                countryCode: countryCodeSelect.value,
+                password: passwordInput.value,
+              }),
+            },
+          );
+
+          const data = await response.json();
+
+          if (data.success) {
+            showNotification(
+              "Account created successfully! Please verify your email and mobile.",
+              true,
+            );
+
+            // Store user data for OTP verification
+            const userData = {
+              fullName:
+                document.querySelector('input[name="fullName"]')?.value ||
+                "User",
+              email: emailInput.value,
+              mobile: mobileInput.value,
+              countryCode: countryCodeSelect.value,
+            };
+            localStorage.setItem("tempUserData", JSON.stringify(userData));
+            localStorage.setItem("pendingUserId", data.userId);
+
+            // Reset form
+            setTimeout(() => {
+              signupForm.reset();
+              passwordStrengthDiv.classList.add("opacity-0");
+              // Redirect to OTP verification page
+              window.location.href = "verify-otp.html";
+            }, 2000);
+          } else {
+            showNotification(data.message, false);
+          }
+        } catch (error) {
+          console.error("Signup error:", error);
+          showNotification("Network error. Please try again.", false);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          submitBtn.style.opacity = "1";
+          isSubmitting = false;
+        }
+      });
+
+      // Social auth button handlers
+      const socialButtons = signupForm.querySelectorAll(
+        'button[type="button"]',
+      );
+      socialButtons.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const provider = this.textContent.includes("Google")
+            ? "Google"
+            : "GitHub";
+          console.log(`Attempting ${provider} authentication...`);
+          // In production, implement OAuth flow here
+        });
+      });
+    </script>
+  </body>
+</html>
