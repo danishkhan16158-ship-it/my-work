@@ -1,48 +1,124 @@
-# Danah Web Backend
+# Danah Web - Full Stack Authentication System
 
-A comprehensive Node.js backend for Danah Web with OTP authentication, user management, and file uploads.
+A modern web application with OTP authentication, user management, and responsive design. Features login, signup, and OTP verification with both frontend and backend components.
+
+## 🌟 Live Demo
+
+**Frontend (Netlify):** [https://danah-web.netlify.app](https://danah-web.netlify.app)  
+**Backend (Local/Cloud):** `http://localhost:5000` (for local development)
 
 ## 🚀 Features
 
+### Frontend
+- **Responsive Design** - Mobile-first with Tailwind CSS
+- **Form Validation** - Real-time validation with user feedback
+- **OTP Verification** - Email and SMS OTP verification flow
+- **Modern UI** - Clean, professional interface with animations
+- **Auto-Reload Protection** - Prevents development tool interference
+
+### Backend
 - **User Registration & Authentication**
 - **Email & SMS OTP Verification**
 - **JWT Token-based Authentication**
 - **Profile Photo Upload**
 - **Password Management**
 - **Rate Limiting & Security**
-- **MongoDB Integration**
+- **MongoDB Integration** (with mock fallback for testing)
 
 ## 📋 Prerequisites
 
 - Node.js (v16 or higher)
-- MongoDB (local or cloud instance)
-- Gmail account (for email OTP) or other SMTP service
+- MongoDB (local or cloud instance) - optional for testing
+- Gmail account (for email OTP) - optional for testing
 
-## 🛠️ Installation
+## 🛠️ Local Development
 
-1. **Install Dependencies**
+### Frontend Only (Recommended for Testing)
+```bash
+# Open HTML files directly in browser
+# No server setup required for basic testing
+start login.html
+start signup.html
+```
 
+### Full Stack Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/danishkhan16158-ship-it/my-work.git
+   cd my-work
+   ```
+
+2. **Install Dependencies**
    ```bash
    npm install
    ```
 
-2. **Setup MongoDB**
-   - Install MongoDB locally or use MongoDB Atlas
-   - Update `MONGODB_URI` in `.env` file
-
-3. **Configure Email Service**
-   - For Gmail: Enable 2FA and generate App Password
-   - Update `EMAIL_USER` and `EMAIL_PASS` in `.env`
-
-4. **Start the Server**
-
+3. **Configure Environment**
    ```bash
-   # Development mode
-   npm run dev
-
-   # Production mode
-   npm start
+   # Copy and edit .env file
+   cp .env.example .env
+   # Edit .env with your configuration
    ```
+
+4. **Start Backend Server**
+   ```bash
+   npm start
+   # Server runs on http://localhost:5000
+   ```
+
+5. **Open Frontend**
+   ```bash
+   # Open HTML files in browser or use a local server
+   start index.html
+   ```
+
+## 🚀 Deployment
+
+### GitHub Repository
+The project is hosted at: [https://github.com/danishkhan16158-ship-it/my-work](https://github.com/danishkhan16158-ship-it/my-work)
+
+### Netlify Deployment (Frontend)
+
+1. **Connect to Netlify**
+   - Go to [netlify.com](https://netlify.com)
+   - Sign up/Login with GitHub
+   - Click "New site from Git"
+   - Choose your GitHub repository
+
+2. **Deploy Settings**
+   - **Branch:** `master`
+   - **Build command:** (leave empty)
+   - **Publish directory:** `.` (root directory)
+
+3. **Environment Variables** (Optional)
+   - No environment variables needed for frontend-only deployment
+
+4. **Deploy**
+   - Click "Deploy site"
+   - Your site will be live at: `https://[your-site-name].netlify.app`
+
+### Backend Deployment Options
+
+#### Option 1: Local Development
+```bash
+npm start
+# Access at http://localhost:5000
+```
+
+#### Option 2: Cloud Deployment (Heroku, Railway, etc.)
+```bash
+# Example for Heroku
+heroku create your-app-name
+git push heroku master
+```
+
+#### Option 3: VPS/Server
+```bash
+# Install PM2 for production
+npm install -g pm2
+pm2 start server.js --name "danah-web"
+```
 
 ## 📧 Email Configuration
 
