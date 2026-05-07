@@ -1,8 +1,7 @@
 [build]
 # This is the directory that contains your static files
 publish = "."
-# Build command for the backend (if needed)
-command = "npm install"
+# No build command needed - all files are static and already in root
 
 [dev]
 # Port for local development
