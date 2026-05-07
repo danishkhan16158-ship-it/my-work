@@ -5,22 +5,27 @@ Since CLI authentication is having issues, let's use the Railway web dashboard -
 ## ✅ Step-by-Step Deployment:
 
 ### 1. Go to Railway Dashboard
+
 - Open [railway.app](https://railway.app) in your browser
 - Make sure you're logged in with GitHub
 
 ### 2. Create New Project
+
 - Click **"Create New Project"**
 - Select **"Deploy from GitHub repo"**
 - Search for and select: `my-work`
 - Click **"Deploy now"**
 
 ### 3. Wait for Initial Deploy
+
 - Railway will automatically detect your Node.js app
 - It will install dependencies and start the server
 - This takes 2-3 minutes
 
 ### 4. Set Environment Variables
+
 Once deployed (green checkmark):
+
 - Click on your project card
 - Go to **"Variables"** tab
 - Add these variables:
@@ -35,11 +40,14 @@ MONGODB_URI=mongodb+srv://demo:demo123@cluster0.mongodb.net/danahweb?retryWrites
 ```
 
 ### 5. Get Your Backend URL
+
 - Go to **"Settings"** tab
 - Copy the **"Domain"** URL (looks like: `https://my-work-production.up.railway.app`)
 
 ### 6. Update Frontend API Config
+
 Edit `api-config.js` line 8:
+
 ```javascript
 // Change this line:
 BASE_URL: "http://localhost:5000",
@@ -49,6 +57,7 @@ BASE_URL: "https://my-work-production.up.railway.app",
 ```
 
 ### 7. Commit & Push
+
 ```bash
 git add api-config.js
 git commit -m "Update API endpoint to production backend"
