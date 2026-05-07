@@ -425,16 +425,19 @@
         submitBtn.style.opacity = "0.7";
 
         try {
-          const response = await fetch(API_CONFIG.getUrl(API_CONFIG.ENDPOINTS.LOGIN), {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+          const response = await fetch(
+            API_CONFIG.getUrl(API_CONFIG.ENDPOINTS.LOGIN),
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                identifier: emailInput.value,
+                password: passwordInput.value,
+              }),
             },
-            body: JSON.stringify({
-              identifier: emailInput.value,
-              password: passwordInput.value,
-            }),
-          });
+          );
 
           const data = await response.json();
 
