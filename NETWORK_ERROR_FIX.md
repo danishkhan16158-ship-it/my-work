@@ -1,9 +1,11 @@
 # 🚨 NETWORK ERROR FIX - Railway Backend Issue
 
 ## 🔍 Problem Identified:
+
 Your Railway backend URL `https://my-work-production-7848.up.railway.app` is **NOT ACCESSIBLE**.
 
 This means either:
+
 1. ❌ Railway deployment failed
 2. ❌ Wrong URL configured
 3. ❌ Railway service is down
@@ -11,6 +13,7 @@ This means either:
 ## 🛠️ IMMEDIATE FIX:
 
 ### Step 1: Check Your Railway Dashboard
+
 1. Go to [railway.app](https://railway.app)
 2. Sign in with GitHub
 3. **Look for your project** - it should be named something like:
@@ -19,13 +22,18 @@ This means either:
    - `danah-web`
 
 ### Step 2: Get the Correct URL
+
 1. Click on your Railway project
 2. Go to **"Settings"** tab
 3. Copy the **"Domain"** URL
 4. It should look like: `https://[project-name]-[random].up.railway.app`
 
+> Note: Do not include `:8080` in the frontend API URL. Railway exposes the public service over HTTPS on the standard port.
+
 ### Step 3: Update api-config.js
+
 Replace line 8 in `api-config.js`:
+
 ```javascript
 // CHANGE THIS LINE:
 BASE_URL: "https://my-work-production-7848.up.railway.app",
@@ -35,7 +43,9 @@ BASE_URL: "https://YOUR-CORRECT-RAILWAY-URL.up.railway.app",
 ```
 
 ### Step 4: If No Project Exists
+
 If you don't see any Railway project:
+
 1. Click **"Create New Project"**
 2. Select **"Deploy from GitHub repo"**
 3. Choose `my-work` repository
@@ -51,7 +61,18 @@ If you don't see any Railway project:
    MONGODB_URI=mongodb+srv://demo:demo123@cluster0.mongodb.net/danahweb?retryWrites=true&w=majority
    ```
 
+> Important: `danah-web-conf` is not used by your code. Your server only reads these exact environment variables:
+>
+> - `MONGODB_URI`
+> - `EMAIL_USER`
+> - `EMAIL_PASS`
+> - `JWT_SECRET`
+> - `PORT`
+>
+> If you set `danah-web-conf` instead of `MONGODB_URI`, the app will still try to connect to `mongodb://localhost:27017/danahweb`, causing signup/login failures.
+
 ### Step 5: Test the Fix
+
 1. Save `api-config.js`
 2. Commit and push to GitHub:
    ```bash
@@ -65,9 +86,11 @@ If you don't see any Railway project:
 ## 🔍 How to Verify Railway is Working:
 
 1. **Test Health Endpoint:**
+
    ```
    https://YOUR-RAILWAY-URL.up.railway.app/api/health
    ```
+
    Should return: `{"status":"OK","message":"Danah Web Backend is running"}`
 
 2. **Check Railway Logs:**
@@ -83,12 +106,15 @@ If you don't see any Railway project:
 ## 📞 If Still Not Working:
 
 **Send me:**
+
 1. Your Railway dashboard screenshot
 2. The exact Domain URL from Railway Settings
 3. Any error messages from Railway logs
 
 ## 🎯 Expected Result:
+
 After fixing the URL, your Netlify site should:
+
 - ✅ Connect to Railway backend
 - ✅ Allow signup/login
 - ✅ Send OTP emails
