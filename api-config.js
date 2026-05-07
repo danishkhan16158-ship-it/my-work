@@ -5,7 +5,7 @@ const API_CONFIG = {
   // CHANGE THIS to your production backend URL
   // For local development: http://localhost:5000
   // For production (Railway): https://your-railway-url.up.railway.app
-  BASE_URL: "my-work-production-7848.up.railway.app",
+  BASE_URL: "https://my-work-production-7848.up.railway.app",
 
   // API Endpoints (auto-constructed)
   ENDPOINTS: {
