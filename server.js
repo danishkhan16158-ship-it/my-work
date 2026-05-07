@@ -6,6 +6,69 @@ const rateLimit = require("express-rate-limit");
 const path = require("path");
 require("dotenv").config();
 
+// Parse custom Railway configuration variable if provided
+const rawRailwayConfig =
+  process.env.DANAH_WEB_CONF ||
+  process.env["danah-web-conf"] ||
+  process.env["danah_web_conf"] ||
+  process.env["DANAH_WEB_CONF"] ||
+  process.env["RAILWAY_STATIC_URL"] ||
+  "";
+
+const parsedRailwayConfig = {};
+if (rawRailwayConfig) {
+  try {
+    // support JSON config or key=value pairs
+    if (rawRailwayConfig.trim().startsWith("{")) {
+      Object.assign(parsedRailwayConfig, JSON.parse(rawRailwayConfig));
+    } else {
+      rawRailwayConfig.split(/[\n;]+/).forEach((line) => {
+        const [key, ...rest] = line.split("=");
+        if (!key) return;
+        parsedRailwayConfig[key.trim()] = rest.join("=").trim();
+      });
+    }
+  } catch (err) {
+    console.warn("Could not parse custom Railway config:", err.message);
+  }
+}
+
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  parsedRailwayConfig.MONGODB_URI ||
+  parsedRailwayConfig.mongodb_uri ||
+  parsedRailwayConfig.mongo_uri ||
+  parsedRailwayConfig["mongo uri"] ||
+  "";
+const EMAIL_USER =
+  process.env.EMAIL_USER ||
+  parsedRailwayConfig.EMAIL_USER ||
+  parsedRailwayConfig.email_user ||
+  "";
+const EMAIL_PASS =
+  process.env.EMAIL_PASS ||
+  parsedRailwayConfig.EMAIL_PASS ||
+  parsedRailwayConfig.email_pass ||
+  "";
+const JWT_SECRET =
+  process.env.JWT_SECRET ||
+  parsedRailwayConfig.JWT_SECRET ||
+  parsedRailwayConfig.jwt_secret ||
+  "your-secret-key-change-in-production";
+
+if (!process.env.MONGODB_URI && MONGODB_URI) {
+  process.env.MONGODB_URI = MONGODB_URI;
+}
+if (!process.env.EMAIL_USER && EMAIL_USER) {
+  process.env.EMAIL_USER = EMAIL_USER;
+}
+if (!process.env.EMAIL_PASS && EMAIL_PASS) {
+  process.env.EMAIL_PASS = EMAIL_PASS;
+}
+if (!process.env.JWT_SECRET && JWT_SECRET) {
+  process.env.JWT_SECRET = JWT_SECRET;
+}
+
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 
@@ -24,8 +87,11 @@ app.use(
         "http://localhost:5000",
       ];
 
-      // Allow any netlify.app domain
-      if (origin && origin.includes("netlify.app")) {
+      // Allow any netlify.app or railway.app domain
+      if (
+        origin &&
+        (origin.includes("netlify.app") || origin.includes("railway.app"))
+      ) {
         return callback(null, true);
       }
 
@@ -94,9 +160,19 @@ app.use("*", (req, res) => {
   });
 });
 
+// Debug loaded environment configuration
+console.log("🔧 Server configuration:");
+console.log(" - PORT:", process.env.PORT || 8080);
+console.log(" - MONGODB_URI present:", Boolean(process.env.MONGODB_URI));
+console.log(" - EMAIL_USER present:", Boolean(process.env.EMAIL_USER));
+console.log(" - EMAIL_PASS present:", Boolean(process.env.EMAIL_PASS));
+console.log(" - JWT_SECRET present:", Boolean(process.env.JWT_SECRET));
+
 // Connect to MongoDB
+const mongoUri =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/danahweb";
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/danahweb", {
+  .connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -112,7 +188,7 @@ mongoose
     // process.exit(1);
   });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log(`🚀 Danah Web Backend running on port ${PORT}`);
