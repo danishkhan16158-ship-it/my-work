@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="api-config.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -424,7 +425,7 @@
         submitBtn.style.opacity = "0.7";
 
         try {
-          const response = await fetch("http://localhost:5000/api/auth/login", {
+          const response = await fetch(API_CONFIG.getUrl(API_CONFIG.ENDPOINTS.LOGIN), {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

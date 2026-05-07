@@ -3,6 +3,7 @@
 ## Quick Deploy to Netlify
 
 ### Step 1: Connect Repository
+
 1. Go to [netlify.com](https://netlify.com)
 2. Sign up/Login with your GitHub account
 3. Click **"Add new site"** → **"Import an existing project"**
@@ -10,6 +11,7 @@
 5. Select your repository: `danishkhan16158-ship-it/my-work`
 
 ### Step 2: Configure Build Settings
+
 ```
 Branch: master
 Build command: (leave empty)
@@ -17,11 +19,13 @@ Publish directory: . (root directory)
 ```
 
 ### Step 3: Deploy
+
 - Click **"Deploy site"**
 - Wait for deployment to complete (usually 1-2 minutes)
 - Your site will be live at: `https://[random-name].netlify.app`
 
 ### Step 4: Custom Domain (Optional)
+
 - Go to **Site settings** → **Domain management**
 - Add your custom domain or change the site name
 
@@ -36,6 +40,7 @@ The following files are already configured for Netlify:
 ## 🌐 Testing Your Live Site
 
 Once deployed, test these features:
+
 - ✅ Homepage loads
 - ✅ Login page works
 - ✅ Signup form functions
@@ -45,6 +50,7 @@ Once deployed, test these features:
 ## 🔄 Updates
 
 To update your site:
+
 1. Make changes to your code
 2. Commit and push to GitHub
 3. Netlify will automatically redeploy
@@ -52,14 +58,17 @@ To update your site:
 ## 🆘 Troubleshooting
 
 **Site not loading?**
+
 - Check build logs in Netlify dashboard
 - Ensure all files are committed to GitHub
 
 **Forms not working?**
+
 - Frontend-only deployment uses mock backend
 - For full functionality, deploy backend separately
 
 **Auto-reload issues?**
+
 - The site includes auto-reload protection
 - No development tools needed for live testing
 

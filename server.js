@@ -15,7 +15,31 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://127.0.0.1:5500", "file://"],
+    origin: function (origin, callback) {
+      // Allow localhost, file protocol, and any netlify.app domain
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:5500",
+        "file://",
+        "http://localhost:5000",
+      ];
+
+      // Allow any netlify.app domain
+      if (origin && origin.includes("netlify.app")) {
+        return callback(null, true);
+      }
+
+      // Allow requests with no origin (mobile apps, postman, etc)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      callback(new Error("CORS not allowed"));
+    },
     credentials: true,
   }),
 );

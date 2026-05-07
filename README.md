@@ -10,6 +10,7 @@ A modern web application with OTP authentication, user management, and responsiv
 ## 🚀 Features
 
 ### Frontend
+
 - **Responsive Design** - Mobile-first with Tailwind CSS
 - **Form Validation** - Real-time validation with user feedback
 - **OTP Verification** - Email and SMS OTP verification flow
@@ -17,6 +18,7 @@ A modern web application with OTP authentication, user management, and responsiv
 - **Auto-Reload Protection** - Prevents development tool interference
 
 ### Backend
+
 - **User Registration & Authentication**
 - **Email & SMS OTP Verification**
 - **JWT Token-based Authentication**
@@ -34,6 +36,7 @@ A modern web application with OTP authentication, user management, and responsiv
 ## 🛠️ Local Development
 
 ### Frontend Only (Recommended for Testing)
+
 ```bash
 # Open HTML files directly in browser
 # No server setup required for basic testing
@@ -44,17 +47,20 @@ start signup.html
 ### Full Stack Setup
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/danishkhan16158-ship-it/my-work.git
    cd my-work
    ```
 
 2. **Install Dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Configure Environment**
+
    ```bash
    # Copy and edit .env file
    cp .env.example .env
@@ -62,6 +68,7 @@ start signup.html
    ```
 
 4. **Start Backend Server**
+
    ```bash
    npm start
    # Server runs on http://localhost:5000
@@ -76,6 +83,7 @@ start signup.html
 ## 🚀 Deployment
 
 ### GitHub Repository
+
 The project is hosted at: [https://github.com/danishkhan16158-ship-it/my-work](https://github.com/danishkhan16158-ship-it/my-work)
 
 ### Netlify Deployment (Frontend)
@@ -101,12 +109,14 @@ The project is hosted at: [https://github.com/danishkhan16158-ship-it/my-work](h
 ### Backend Deployment Options
 
 #### Option 1: Local Development
+
 ```bash
 npm start
 # Access at http://localhost:5000
 ```
 
 #### Option 2: Cloud Deployment (Heroku, Railway, etc.)
+
 ```bash
 # Example for Heroku
 heroku create your-app-name
@@ -114,6 +124,7 @@ git push heroku master
 ```
 
 #### Option 3: VPS/Server
+
 ```bash
 # Install PM2 for production
 npm install -g pm2
