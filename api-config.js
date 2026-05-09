@@ -4,8 +4,8 @@
 const API_CONFIG = {
   // CHANGE THIS to your production backend URL
   // For local development: http://localhost:5000
-  // For production (Railway): https://your-railway-url.up.railway.app
-  BASE_URL: "https://my-work-production-7848.up.railway.app",
+  // For production (Railway internal): http://<service-name>.railway.internal:<port>
+  BASE_URL: "http://zestful-intuition.railway.internal:8080",
 
   // API Endpoints (auto-constructed)
   ENDPOINTS: {
